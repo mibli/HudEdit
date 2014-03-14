@@ -15,6 +15,9 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
+private slots:
+	void on_actionSidebar_toggled(bool arg1);
+
 private:
 	Ui::MainWindow *ui;
 };

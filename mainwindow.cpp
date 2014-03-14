@@ -12,3 +12,9 @@ MainWindow::~MainWindow()
 {
 	delete ui;
 }
+
+void MainWindow::on_actionSidebar_toggled(bool arg1)
+{
+	if(arg1)	ui->sidebar->show();
+	else		ui->sidebar->hide();
+}
