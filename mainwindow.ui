@@ -301,6 +301,9 @@
    <property name="text">
     <string>Sidebar</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Tab</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
