@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SelectDialog</class>
+ <widget class="QDialog" name="SelectDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>630</width>
+    <height>593</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>UV Selector</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="hudResources/hudIcons.qrc">
+    <normaloff>:/new/mainIcon/png16</normaloff>:/new/mainIcon/png16</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" name="mainLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QGraphicsView" name="graphicsView"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="paramsLayout">
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="doneButton">
+         <property name="text">
+          <string>Done</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="posLabel">
+         <property name="text">
+          <string>Position</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="xBox">
+         <property name="toolTip">
+          <string>x position</string>
+         </property>
+         <property name="minimum">
+          <number>-1280</number>
+         </property>
+         <property name="maximum">
+          <number>1280</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="yBox">
+         <property name="toolTip">
+          <string>y position</string>
+         </property>
+         <property name="minimum">
+          <number>-1280</number>
+         </property>
+         <property name="maximum">
+          <number>1280</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="sizeLabel">
+         <property name="text">
+          <string>Size</string>
+         </property>
+         <property name="indent">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="widthBox">
+         <property name="toolTip">
+          <string>width</string>
+         </property>
+         <property name="minimum">
+          <number>-1280</number>
+         </property>
+         <property name="maximum">
+          <number>1280</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="heightBox">
+         <property name="toolTip">
+          <string>height</string>
+         </property>
+         <property name="minimum">
+          <number>-1280</number>
+         </property>
+         <property name="maximum">
+          <number>1280</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="hudResources/hudIcons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

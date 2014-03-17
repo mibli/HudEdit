@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/new/mainIcon">
+        <file alias="png16">D:/Obrazy/Graphic/hudEdit/icon16.png</file>
+        <file alias="png23">D:/Obrazy/Graphic/hudEdit/icon32.png</file>
+        <file alias="png48">D:/Obrazy/Graphic/hudEdit/icon48.png</file>
+        <file alias="ico">D:/Obrazy/Graphic/hudEdit/icon.ico</file>
+    </qresource>
+</RCC>

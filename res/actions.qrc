@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/new/actions">
+        <file>anchor.png</file>
+        <file>cursor.png</file>
+        <file>disk.png</file>
+        <file>layers.png</file>
+        <file>new.png</file>
+        <file>selection.png</file>
+        <file>selection_select.png</file>
+        <file>shape_aling_bottom.png</file>
+        <file>shape_aling_center.png</file>
+        <file>shape_aling_left.png</file>
+        <file>shape_aling_middle.png</file>
+        <file>shape_aling_right.png</file>
+        <file>shape_aling_top.png</file>
+        <file>shape_flip_horizontal.png</file>
+        <file>shape_flip_vertical.png</file>
+        <file>shape_group.png</file>
+        <file>shape_handles.png</file>
+        <file>text_align_center.png</file>
+        <file>text_align_left.png</file>
+        <file>text_align_right.png</file>
+        <file>arrow_redo.png</file>
+        <file>arrow_undo.png</file>
+        <file>exclamation.png</file>
+        <file>folder.png</file>
+        <file>help.png</file>
+        <file>link.png</file>
+        <file>link_break.png</file>
+        <file>world.png</file>
+    </qresource>
+</RCC>
