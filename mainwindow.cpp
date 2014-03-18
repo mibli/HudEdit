@@ -19,6 +19,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(w_scene,SIGNAL(itemMovedY(int)),ui->yBox,SLOT(setValue(int)));
 	connect(w_scene,SIGNAL(itemChangedW(int)),ui->widthBox,SLOT(setValue(int)));
 	connect(w_scene,SIGNAL(itemChangedH(int)),ui->heightBox,SLOT(setValue(int)));
+	connect(ui->actionAlign_Left,SIGNAL(triggered()),w_scene,SLOT(alignLeft()));
+	connect(ui->actionCenter_Horizontally,SIGNAL(triggered()),w_scene,SLOT(centerHorizontal()));
+	connect(ui->actionAlign_Right,SIGNAL(triggered()),w_scene,SLOT(alignRight()));
+	connect(ui->actionAlign_Top,SIGNAL(triggered()),w_scene,SLOT(alignTop()));
+	connect(ui->actionCenter_Vertically,SIGNAL(triggered()),w_scene,SLOT(centerVertical()));
+	connect(ui->actionAlign_Bottom,SIGNAL(triggered()),w_scene,SLOT(alignBottom()));
 	connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(load()));
 
 	selectDialog = new SelectDialog(this);
@@ -93,7 +99,6 @@ void MainWindow::on_actionUV_Selector_triggered()
 void MainWindow::on_actionResize_triggered()
 {
 	ui->actionResize->setChecked(1);
-	ui->actionAlign->setChecked(0);
 	ui->actionSelect->setChecked(0);
 
 	editMode = 0;
@@ -102,17 +107,9 @@ void MainWindow::on_actionResize_triggered()
 	w_scene->setEditFlag(BaseScene::AllowItemSelection);
 }
 
-void MainWindow::on_actionAlign_triggered()
-{
-	ui->actionResize->setChecked(0);
-	ui->actionAlign->setChecked(1);
-	ui->actionSelect->setChecked(0);
-}
-
 void MainWindow::on_actionSelect_triggered()
 {
 	ui->actionResize->setChecked(0);
-	ui->actionAlign->setChecked(0);
 	ui->actionSelect->setChecked(1);
 
 	editMode = 1;

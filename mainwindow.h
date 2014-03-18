@@ -38,7 +38,6 @@ private slots:
 
 	void on_actionUV_Selector_triggered();
 	void on_actionResize_triggered();
-	void on_actionAlign_triggered();
 	void on_actionSelect_triggered();
 
 	void on_actionItem_List_toggled(bool arg1);

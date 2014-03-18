@@ -18,7 +18,7 @@ QList<BaseItem *> BaseScene::selectedBaseItems() const
 	QList<BaseItem*> list;
 	BaseItem* item;
 
-	for(int i; i<origin.count(); i++)
+	for(int i=0; i<origin.count(); i++)
 	{
 		item = dynamic_cast<BaseItem*>(origin[i]);
 		if(item) list.append(item);

@@ -166,9 +166,21 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <widget class="QMenu" name="menuAlign">
+     <property name="title">
+      <string>Align</string>
+     </property>
+     <addaction name="actionAlign_Left"/>
+     <addaction name="actionCenter_Horizontally"/>
+     <addaction name="actionAlign_Right"/>
+     <addaction name="separator"/>
+     <addaction name="actionAlign_Top"/>
+     <addaction name="actionCenter_Vertically"/>
+     <addaction name="actionAlign_Bottom"/>
+    </widget>
     <addaction name="actionResize"/>
-    <addaction name="actionAlign"/>
     <addaction name="actionSelect"/>
+    <addaction name="menuAlign"/>
     <addaction name="separator"/>
     <addaction name="actionGroup"/>
     <addaction name="actionUngroup"/>
@@ -220,7 +232,6 @@
    </attribute>
    <addaction name="actionSelect"/>
    <addaction name="actionResize"/>
-   <addaction name="actionAlign"/>
    <addaction name="separator"/>
    <addaction name="actionGroup"/>
    <addaction name="actionUngroup"/>
@@ -286,24 +297,6 @@
    </property>
    <property name="shortcut">
     <string>R</string>
-   </property>
-  </action>
-  <action name="actionAlign">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_left.png</normaloff>:/new/actions/shape_aling_left.png</iconset>
-   </property>
-   <property name="text">
-    <string>Align</string>
-   </property>
-   <property name="shortcut">
-    <string>A</string>
    </property>
   </action>
   <action name="actionZoom_In">
@@ -436,6 +429,78 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Tab</string>
+   </property>
+  </action>
+  <action name="actionAlign_Left">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/new/actions/shape_aling_left.png</normaloff>:/new/actions/shape_aling_left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Left</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A, 1</string>
+   </property>
+  </action>
+  <action name="actionCenter_Horizontally">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/new/actions/shape_aling_center.png</normaloff>:/new/actions/shape_aling_center.png</iconset>
+   </property>
+   <property name="text">
+    <string>Center Horizontally</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A, 2</string>
+   </property>
+  </action>
+  <action name="actionAlign_Right">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/new/actions/shape_aling_right.png</normaloff>:/new/actions/shape_aling_right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Right</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A, 3</string>
+   </property>
+  </action>
+  <action name="actionAlign_Top">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/new/actions/shape_aling_top.png</normaloff>:/new/actions/shape_aling_top.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Top</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A, 4</string>
+   </property>
+  </action>
+  <action name="actionCenter_Vertically">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/new/actions/shape_aling_middle.png</normaloff>:/new/actions/shape_aling_middle.png</iconset>
+   </property>
+   <property name="text">
+    <string>Center Vertically</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A, 5</string>
+   </property>
+  </action>
+  <action name="actionAlign_Bottom">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/new/actions/shape_aling_bottom.png</normaloff>:/new/actions/shape_aling_bottom.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Bottom</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A, 6</string>
    </property>
   </action>
  </widget>
