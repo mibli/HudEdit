@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     selDial\selectitem.cpp \
     selDial\selectdialog.cpp \
     base/baseitem.cpp \
-    base/basescene.cpp
+    base/basescene.cpp \
+    base/baseview.cpp
 
 HEADERS  += mainwindow.h \
     hud\huditem.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     selDial\selectdialog.h \
     Hud.h \
     base/baseitem.h \
-    base/basescene.h
+    base/basescene.h \
+    base/baseview.h
 
 FORMS    += mainwindow.ui \
     selDial\selectdialog.ui

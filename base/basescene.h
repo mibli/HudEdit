@@ -15,6 +15,7 @@ private:
 	QImage	texture;
 	int		grabMouse = 0;
 	int		editFlags;
+	int		selectMode = 0;
 public:
 	explicit BaseScene(QObject *parent = 0);
 
@@ -24,6 +25,12 @@ public:
 		AllowItemMovement	= 1ul << 0,
 		AllowItemResizing	= 1ul << 1,
 		AllowItemSelection	= 1ul << 2
+	};
+	enum	SelectMode
+	{
+		Default				= 0,
+		Subtract			= 1,
+		Expand				= 2
 	};
 
 	BaseItem*			focusBaseItem() const;
