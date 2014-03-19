@@ -358,9 +358,6 @@
    </property>
   </action>
   <action name="actionWiki">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
      <normaloff>:/new/actions/world.png</normaloff>:/new/actions/world.png</iconset>
@@ -370,9 +367,6 @@
    </property>
   </action>
   <action name="actionAbout">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
      <normaloff>:/new/actions/exclamation.png</normaloff>:/new/actions/exclamation.png</iconset>

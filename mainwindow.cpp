@@ -30,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(ui->actionUngroup,SIGNAL(triggered()),w_scene,SLOT(ungroup()));
 
 	selectDialog = new SelectDialog(this);
+
+	about = new About(this);
+	connect(ui->actionAbout,SIGNAL(triggered()),about,SLOT(show()));
+
 	editMode = 0;
 }
 
@@ -132,3 +136,5 @@ void MainWindow::on_actionItem_List_toggled(bool arg1)
 void MainWindow::on_actionZoom_In_triggered()			{ ui->screen->scale(2,2); }
 
 void MainWindow::on_actionZoom_Out_triggered()			{ ui->screen->scale(0.5,0.5); }
+
+void MainWindow::on_actionWiki_triggered()				{ QDesktopServices::openUrl(QUrl("https://sourceforge.net/p/hudedit/wiki/Home/")); }

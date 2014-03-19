@@ -13,6 +13,7 @@
 #include "hud/huditem.h"
 #include "ini/listfile.h"
 #include "selDial/selectdialog.h"
+#include "dialogs/about.h"
 
 namespace Ui {
 class MainWindow;
@@ -45,12 +46,15 @@ private slots:
 	void on_actionZoom_In_triggered();
 	void on_actionZoom_Out_triggered();
 
+	void on_actionWiki_triggered();
+
 private:
 	Ui::MainWindow	*ui;
 	FileMode		w_mode;
 	ListFile*		w_list;
 	HudScene*		w_scene;
 	SelectDialog*	selectDialog;
+	About*			about;
 	int				editMode;
 };
 
