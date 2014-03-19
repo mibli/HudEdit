@@ -54,6 +54,9 @@ public slots:
 	void	alignTop();
 	void	alignBottom();
 	void	centerVertical();
+	/* grouping */
+	void	group();
+	void	ungroup();
 	/* for Spinboxes */
 	void	itemSetX(int x)				{ if(BaseItem* item = dynamic_cast<BaseItem*>(focusItem())) item->setX(x); }
 	void	itemSetY(int y)				{ if(BaseItem* item = dynamic_cast<BaseItem*>(focusItem())) item->setY(y); }
@@ -63,7 +66,6 @@ protected:
 	void	mousePressEvent(QGraphicsSceneMouseEvent *event);
 	void	mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 	void	mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-	void	keyPressEvent(QKeyEvent *event);
 };
 
 #endif // BASESCENE_H

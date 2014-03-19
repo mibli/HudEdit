@@ -145,6 +145,38 @@ void BaseScene::centerVertical()
 	}
 }
 
+void BaseScene::group()
+{
+	QList<QGraphicsItem*> items = selectedItems();
+	if(items.count() > 1)
+	{
+		for(int i=0; i<items.count(); i++)
+		{
+			items[i]->setFlag(QGraphicsItem::ItemIsFocusable, 0);
+			items[i]->setFlag(QGraphicsItem::ItemIsSelectable, 0);
+			items[i]->setFlag(QGraphicsItem::ItemIsMovable, 0);
+		}
+		QGraphicsItemGroup* group = createItemGroup(items);
+		group->setFlags(QGraphicsItemGroup::ItemIsSelectable | QGraphicsItemGroup::ItemIsFocusable | QGraphicsItemGroup::ItemIsMovable);
+	}
+}
+
+void BaseScene::ungroup()
+{
+	QGraphicsItemGroup* group = dynamic_cast<QGraphicsItemGroup*>(focusItem());
+	if(group)
+	{
+		QList<QGraphicsItem*> items = group->childItems();
+		for(int i=0; i<items.count(); i++)
+		{
+			items[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+			items[i]->setFlag(QGraphicsItem::ItemIsSelectable);
+			items[i]->setFlag(QGraphicsItem::ItemIsMovable);
+		}
+		destroyItemGroup(group);
+	}
+}
+
 void BaseScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	BaseItem* item = dynamic_cast<BaseItem*>(itemAt(event->scenePos(), QTransform()));
@@ -199,8 +231,4 @@ void BaseScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	{
 		QGraphicsScene::mouseReleaseEvent(event);
 	}
-}
-
-void BaseScene::keyPressEvent(QKeyEvent *event)
-{
 }

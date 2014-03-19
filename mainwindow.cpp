@@ -26,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(ui->actionCenter_Vertically,SIGNAL(triggered()),w_scene,SLOT(centerVertical()));
 	connect(ui->actionAlign_Bottom,SIGNAL(triggered()),w_scene,SLOT(alignBottom()));
 	connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(load()));
+	connect(ui->actionGroup,SIGNAL(triggered()),w_scene,SLOT(group()));
+	connect(ui->actionUngroup,SIGNAL(triggered()),w_scene,SLOT(ungroup()));
 
 	selectDialog = new SelectDialog(this);
 	editMode = 0;
