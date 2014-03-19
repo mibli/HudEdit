@@ -154,10 +154,10 @@ void BaseScene::group()
 		{
 			items[i]->setFlag(QGraphicsItem::ItemIsFocusable, 0);
 			items[i]->setFlag(QGraphicsItem::ItemIsSelectable, 0);
-			items[i]->setFlag(QGraphicsItem::ItemIsMovable, 0);
 		}
 		QGraphicsItemGroup* group = createItemGroup(items);
 		group->setFlags(QGraphicsItemGroup::ItemIsSelectable | QGraphicsItemGroup::ItemIsFocusable | QGraphicsItemGroup::ItemIsMovable);
+		group->setSelected(1);
 	}
 }
 
@@ -171,7 +171,6 @@ void BaseScene::ungroup()
 		{
 			items[i]->setFlag(QGraphicsItem::ItemIsFocusable);
 			items[i]->setFlag(QGraphicsItem::ItemIsSelectable);
-			items[i]->setFlag(QGraphicsItem::ItemIsMovable);
 		}
 		destroyItemGroup(group);
 	}

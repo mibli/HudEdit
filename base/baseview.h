@@ -14,6 +14,7 @@ class BaseView : public QGraphicsView
 private:
 	QList<QGraphicsItem*> selection;
 	int selMode;
+	bool mouseGrabbed;
 
 public:
 	enum SelectionMode

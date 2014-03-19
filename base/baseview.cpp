@@ -3,6 +3,7 @@
 BaseView::BaseView(QWidget *parent) :
 	QGraphicsView(parent)
 {
+	mouseGrabbed = 0;
 }
 
 void BaseView::wheelEvent(QWheelEvent *event)
@@ -20,13 +21,17 @@ void BaseView::mousePressEvent(QMouseEvent *event)
 {
 	QGraphicsView::mousePressEvent(event);
 	if(selMode) loadSelection();
+	mouseGrabbed = 1;
 }
 
 void BaseView::mouseMoveEvent(QMouseEvent *event)
 {
 	QGraphicsView::mouseMoveEvent(event);
-	if(selMode == SubtractingSelection)		loadSubSelection();
-	if(selMode == ExtendingSelection)		loadSelection();
+	if(mouseGrabbed)
+	{
+		if(selMode == SubtractingSelection)		loadSubSelection();
+		if(selMode == ExtendingSelection)		loadSelection();
+	}
 }
 
 void BaseView::mouseReleaseEvent(QMouseEvent *event)
@@ -34,6 +39,7 @@ void BaseView::mouseReleaseEvent(QMouseEvent *event)
 	if(dragMode() == RubberBandDrag && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::ShiftModifier))
 	{ saveSelection(); }
 	QGraphicsView::mouseReleaseEvent(event);
+	mouseGrabbed = 0;
 }
 
 void BaseView::keyPressEvent(QKeyEvent *event)
