@@ -49,99 +49,81 @@ void BaseScene::drawBackground(QPainter *painter, const QRectF &rect)
 	painter->fillRect(sceneRect(), fgbrush);
 }
 
-void BaseScene::alignLeft()
+void BaseScene::alignTo(BaseScene::AlignTo f)
 {
-	QList<BaseItem*> list = selectedBaseItems();
-
-	if(list.count() == 1)
+	QGraphicsItemGroup* group = dynamic_cast<QGraphicsItemGroup*>(focusItem());
+	if(group)	alignSingle(focusItem(), f, 1);
+	else
 	{
-		list[0]->setX(0);
-		emitItemSignals(list[0],1,0);
-	}
-	else if(list.count() > 0)
-	{
-		int ext = list[0]->x();
-		for(int i=0; i<list.count(); i++)		list[i]->setX(ext);
+		QList<QGraphicsItem*> list = selectedItems();
+		if(list.count() == 1)		alignSingle(list[0], f);
+		else if(list.count() > 0)	alignMultiple(list, f);
 	}
 }
 
-void BaseScene::alignRight()
+void BaseScene::alignSingle(QGraphicsItem *item, BaseScene::AlignTo f, bool group)
 {
-	QList<BaseItem*> list = selectedBaseItems();
+	int xmod, ymod;
+	xmod = ymod = 0;
+	if(group)
+	{
+		xmod = item->boundingRect().x();
+		ymod = item->boundingRect().y();
+	}
 
-	if(list.count() == 1)
+	switch(f)
 	{
-		list[0]->setX(sceneRect().right() - abs(list[0]->width()));
-		emitItemSignals(list[0],1,0);
+	case Left:
+		item->setX(0 - xmod);
+		break;
+	case Horizontal:
+		item->setX(int((sceneRect().width() - item->boundingRect().width())/2) - xmod);
+		break;
+	case Right:
+		item->setX(sceneRect().width() - item->boundingRect().width() - xmod);
+		break;
+	case Top:
+		item->setY(0 - ymod);
+		break;
+	case Vertical:
+		item->setY(int((sceneRect().height() - item->boundingRect().height())/2) - ymod);
+		break;
+	case Bottom:
+		item->setY(sceneRect().height() - item->boundingRect().height() - ymod);
+		break;
 	}
-	else if(list.count() > 0)
-	{
-		int ext = list[0]->x() + abs(list[0]->width());
-		for(int i=0; i<list.count(); i++)		list[i]->setX(ext - abs(list[i]->width()));
-	}
+	BaseItem* b_item = dynamic_cast<BaseItem*>(item);
+	if(b_item)	emitItemSignals(b_item,1,0);
 }
 
-void BaseScene::centerHorizontal()
+void BaseScene::alignMultiple(QList<QGraphicsItem *> list, BaseScene::AlignTo f)
 {
-	QList<BaseItem*> list = selectedBaseItems();
-
-	if(list.count() == 1)
+	switch(f)
 	{
-		list[0]->setX(sceneRect().right() - qRound(qreal(abs(list[0]->width()) / 2)));
-		emitItemSignals(list[0],1,0);
-	}
-	else if(list.count() > 0)
-	{
-		int ext = list[0]->x() + qRound(qreal(abs(list[0]->width())) / 2);
-		for(int i=0; i<list.count(); i++)		list[i]->setX(ext - qRound(qreal(abs(list[i]->width()) / 2)));
-	}
-}
-
-void BaseScene::alignTop()
-{
-	QList<BaseItem*> list = selectedBaseItems();
-
-	if(list.count() == 1)
-	{
-		list[0]->setY(0);
-		emitItemSignals(list[0],1,0);
-	}
-	else if(list.count() > 0)
-	{
-		int ext = list[0]->y();
-		for(int i=0; i<list.count(); i++)		list[i]->setY(ext);
-	}
-}
-
-void BaseScene::alignBottom()
-{
-	QList<BaseItem*> list = selectedBaseItems();
-
-	if(list.count() == 1)
-	{
-		list[0]->setY(sceneRect().bottom() - abs(list[0]->height()));
-		emitItemSignals(list[0],1,0);
-	}
-	else if(list.count() > 0)
-	{
-		int ext = list[0]->y() + abs(list[0]->height());
-		for(int i=0; i<list.count(); i++)		list[i]->setY(ext - abs(list[i]->height()));
-	}
-}
-
-void BaseScene::centerVertical()
-{
-	QList<BaseItem*> list = selectedBaseItems();
-
-	if(list.count() == 1)
-	{
-		list[0]->setY(sceneRect().bottom() - qRound(qreal(abs(list[0]->height()) / 2)));
-		emitItemSignals(list[0],1,0);
-	}
-	else if(list.count() > 0)
-	{
-		int ext = list[0]->y() + qRound(qreal(abs(list[0]->height()) / 2));
-		for(int i=0; i<list.count(); i++)		list[i]->setY(ext - qRound(qreal(abs(list[i]->height()) / 2)));
+	case Left:
+		for(int i=0; i<list.count(); i++)
+			list[i]->setX(list[0]->x());
+		break;
+	case Horizontal:
+		for(int i=0; i<list.count(); i++)
+			list[i]->setX(list[0]->x() + int((list[0]->boundingRect().width() - list[i]->boundingRect().width())/2));
+		break;
+	case Right:
+		for(int i=0; i<list.count(); i++)
+			list[i]->setX(list[0]->x() + list[0]->boundingRect().width() - list[i]->boundingRect().width());
+		break;
+	case Top:
+		for(int i=0; i<list.count(); i++)
+			list[i]->setY(list[0]->y());
+		break;
+	case Vertical:
+		for(int i=0; i<list.count(); i++)
+			list[i]->setY(list[0]->y() + int((list[0]->boundingRect().height() - list[i]->boundingRect().height())/2));
+		break;
+	case Bottom:
+		for(int i=0; i<list.count(); i++)
+			list[i]->setY(list[0]->y() + list[0]->boundingRect().height() - list[i]->boundingRect().height());
+		break;
 	}
 }
 
@@ -152,12 +134,15 @@ void BaseScene::group()
 	{
 		for(int i=0; i<items.count(); i++)
 		{
+			items[i]->setSelected(0);
 			items[i]->setFlag(QGraphicsItem::ItemIsFocusable, 0);
 			items[i]->setFlag(QGraphicsItem::ItemIsSelectable, 0);
+			items[i]->setFlag(QGraphicsItem::ItemIsMovable, 0);
 		}
 		QGraphicsItemGroup* group = createItemGroup(items);
 		group->setFlags(QGraphicsItemGroup::ItemIsSelectable | QGraphicsItemGroup::ItemIsFocusable | QGraphicsItemGroup::ItemIsMovable);
 		group->setSelected(1);
+		group->setFocus();
 	}
 }
 
@@ -171,6 +156,8 @@ void BaseScene::ungroup()
 		{
 			items[i]->setFlag(QGraphicsItem::ItemIsFocusable);
 			items[i]->setFlag(QGraphicsItem::ItemIsSelectable);
+			items[i]->setFlag(QGraphicsItem::ItemIsMovable);
+			items[i]->setSelected(1);
 		}
 		destroyItemGroup(group);
 	}

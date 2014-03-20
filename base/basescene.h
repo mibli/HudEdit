@@ -26,6 +26,15 @@ public:
 		AllowItemResizing	= 1ul << 1,
 		AllowItemSelection	= 1ul << 2
 	};
+	enum	AlignTo
+	{
+		Left		= 1,
+		Horizontal	= 2,
+		Right		= 3,
+		Top			= 4,
+		Vertical	= 5,
+		Bottom		= 6
+	};
 	enum	SelectMode
 	{
 		Default				= 0,
@@ -41,6 +50,11 @@ public:
 	void	setEditFlag(EditFlags f)		{ editFlags |= f; }
 	void	setEditFlags(EditFlags f)		{ editFlags = f; }
 
+	/* alignment */
+	void	alignTo(AlignTo f);
+	void	alignSingle(QGraphicsItem * item, AlignTo f, bool group = 0);
+	void	alignMultiple(QList<QGraphicsItem*> list, AlignTo f);
+
 signals:
 	void	itemMovedX(int);
 	void	itemMovedY(int);
@@ -48,12 +62,12 @@ signals:
 	void	itemChangedH(int);
 public slots:
 	/* for Align */
-	void	alignLeft();
-	void	alignRight();
-	void	centerHorizontal();
-	void	alignTop();
-	void	alignBottom();
-	void	centerVertical();
+	void	alignLeft()					{ alignTo(Left); }
+	void	alignRight()				{ alignTo(Right); }
+	void	centerHorizontal()			{ alignTo(Horizontal); }
+	void	alignTop()					{ alignTo(Top); }
+	void	alignBottom()				{ alignTo(Bottom); }
+	void	centerVertical()			{ alignTo(Vertical); }
 	/* grouping */
 	void	group();
 	void	ungroup();
