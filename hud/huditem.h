@@ -20,6 +20,11 @@ public:
 	QRectF boundingRect() const	{ return BaseItem::boundingRect(); }
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 	bool resize(int deltaWidth, int deltaHeight);
+	QString		getName()				{ return (*iniItem)["Name"]; }
+	bool		hasAtlas()				{ return (*iniItem)["Texture"].toString().contains("HUDAtlas", Qt::CaseInsensitive); }
+	bool		hasUV()					{ return iniItem->contains("UV"); }
+	QRectF		getUV()					{ if(hasUV()) return (*iniItem)["UV"].toQRectF(); else return QRectF(); }
+	void		setUV(const QRectF &r)	{ if(hasUV()) (*iniItem)["UV"] = r; }
 
 private:
 	QImage		texture;

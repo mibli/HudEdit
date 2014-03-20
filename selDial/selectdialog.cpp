@@ -36,6 +36,18 @@ bool SelectDialog::loadImage(const QString &path)
 	selectScene->setImage(texture);
 }
 
+bool SelectDialog::loadImage(const QImage &image)
+{
+	texture = image;
+	selectScene->setImage(texture);
+}
+
+void SelectDialog::selectRect(const QRect &r)
+{
+	selectScene->select(r.x(),r.y(),r.width(),r.height());
+	show();
+}
+
 void SelectDialog::doneSelecting()
 {
 	emit rectSelected(
@@ -49,6 +61,6 @@ void SelectDialog::doneSelecting()
 
 void SelectDialog::selectRect(int x1, int y1, int x2, int y2)
 {
-	selectScene->select( x1, y1, x1+x2, y1+y2 );
+	selectScene->select( x1, y1, x1-x2, y1-y2 );
 	show();
 }

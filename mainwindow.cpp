@@ -26,10 +26,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(ui->actionCenter_Vertically,SIGNAL(triggered()),w_scene,SLOT(centerVertical()));
 	connect(ui->actionAlign_Bottom,SIGNAL(triggered()),w_scene,SLOT(alignBottom()));
 	connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(load()));
+	connect(ui->actionSave,SIGNAL(triggered()),this,SLOT(save()));
 	connect(ui->actionGroup,SIGNAL(triggered()),w_scene,SLOT(group()));
 	connect(ui->actionUngroup,SIGNAL(triggered()),w_scene,SLOT(ungroup()));
 
 	selectDialog = new SelectDialog(this);
+	connect(selectDialog,SIGNAL(rectSelected(int,int,int,int)),this,SLOT(onUVin(int,int,int,int)));
 
 	about = new About(this);
 	connect(ui->actionAbout,SIGNAL(triggered()),about,SLOT(show()));
@@ -65,41 +67,41 @@ void MainWindow::load()
 	}
 }
 
+void MainWindow::loadImage()
+{
+	QString path = QFileDialog::getOpenFileName(0,"Open Texture File","","(hudatlas.png)");
+	if(!path.isEmpty())
+	{
+		if(!HUDAtlas.load(path))
+			qDebug() << "MainWindow::loadImg failure - couldn't load the img";
+	}
+	else
+		qDebug() << "MainWindow::loadImg - user canceled";
+}
+
 void MainWindow::save()
 {
 	w_list->save();
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-	ui->screen->scale(2,2);
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-	ui->screen->scale(0.5,0.5);
-}
-
-void MainWindow::keyPressEvent(QKeyEvent *e)
-{
-	if( e->matches( QKeySequence::ZoomIn ) )
-	{
-		ui->screen->scale(2,2);
-		e->accept();
-	}
-	else if( e->matches( QKeySequence::ZoomOut ) )
-	{
-		ui->screen->scale(0.5,0.5);
-		e->accept();
-	}
-	QMainWindow::keyPressEvent(e);
-}
-
 void MainWindow::on_actionUV_Selector_triggered()
 {
-	QString path = QFileDialog::getOpenFileName(0,"Open Texture File","","(hudatlas.png)");
-	selectDialog->loadImage(path);
-	selectDialog->show();
+	HudItem* item = dynamic_cast<HudItem*>(w_scene->focusItem());
+	if(item)
+	{
+		if(item->hasUV())
+		{
+			if(item->hasAtlas())
+			{
+				if(HUDAtlas.isNull())	loadImage();
+				if(!HUDAtlas.isNull())	selectDialog->loadImage(HUDAtlas);
+				selectDialog->selectRect(item->getUV().toRect());
+				//ui->setEnabled(false);
+			}
+		}
+		else	QMessageBox::information(this,"No UV","This item doesn't have texture property",QMessageBox::Ok);
+	}
+	else	QMessageBox::information(this,"No focused item","Please focus an item first",QMessageBox::Ok);
 }
 
 void MainWindow::on_actionResize_triggered()
@@ -138,3 +140,11 @@ void MainWindow::on_actionZoom_In_triggered()			{ ui->screen->scale(2,2); }
 void MainWindow::on_actionZoom_Out_triggered()			{ ui->screen->scale(0.5,0.5); }
 
 void MainWindow::on_actionWiki_triggered()				{ QDesktopServices::openUrl(QUrl("https://sourceforge.net/p/hudedit/wiki/Home/")); }
+
+void MainWindow::onUVin(int x1, int y1, int x2, int y2)
+{
+	QRect r(x1,y1,x2-x1,y2-y1);
+	HudItem* item = static_cast<HudItem*>(w_scene->focusItem());
+	item->setUV(r);
+	this->setEnabled(true);
+}

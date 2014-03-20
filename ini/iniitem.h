@@ -30,7 +30,7 @@ public:
 	bool lin2par(const QString &in, QString &label, QString &value);
 	bool lin2par(const QString &in, QString &label, IniParam &param, bool define = 1);
 
-	bool		contains(const QString &label)		{return c_labels.contains(label);}
+	bool		contains(const QString &label)		{return c_labels.contains(label,Qt::CaseInsensitive);}
 	int			count()								{return c_labels.count();}
 	IniParam	&value(const QString &label)		{return *c_values[c_labels.indexOf(label)];}
 	IniParam	&operator[](const QString &label)	{return value(label);}

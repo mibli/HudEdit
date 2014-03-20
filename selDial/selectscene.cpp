@@ -98,6 +98,10 @@ void SelectScene::select(int x, int y, int w, int h)
 		setWidth(w);
 		setHeight(h);
 		emit updated();
+		emit xChanged( selectItem->rect().x() );
+		emit yChanged( selectItem->rect().y() );
+		emit widthChanged( selectItem->rect().width() );
+		emit heightChanged( selectItem->rect().height() );
 	}
 }
 

@@ -17,6 +17,8 @@ public:
 	explicit SelectDialog(QWidget *parent = 0);
 	~SelectDialog();
 	bool loadImage(const QString &path);
+	bool loadImage(const QImage &image);
+	void selectRect(const QRect &r);
 
 private:
 	Ui::SelectDialog *ui;
