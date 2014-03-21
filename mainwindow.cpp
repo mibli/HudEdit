@@ -15,18 +15,26 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	w_mode = NoFile;
 
+	/* boxes */
 	connect(w_scene,SIGNAL(itemMovedX(int)),ui->xBox,SLOT(setValue(int)));
 	connect(w_scene,SIGNAL(itemMovedY(int)),ui->yBox,SLOT(setValue(int)));
 	connect(w_scene,SIGNAL(itemChangedW(int)),ui->widthBox,SLOT(setValue(int)));
 	connect(w_scene,SIGNAL(itemChangedH(int)),ui->heightBox,SLOT(setValue(int)));
+	connect(ui->xBox,SIGNAL(valueChanged(int)),w_scene,SLOT(itemSetX(int)));
+	connect(ui->yBox,SIGNAL(valueChanged(int)),w_scene,SLOT(itemSetY(int)));
+	connect(ui->widthBox,SIGNAL(valueChanged(int)),w_scene,SLOT(itemSetW(int)));
+	connect(ui->heightBox,SIGNAL(valueChanged(int)),w_scene,SLOT(itemSetH(int)));
+	/* aligning */
 	connect(ui->actionAlign_Left,SIGNAL(triggered()),w_scene,SLOT(alignLeft()));
 	connect(ui->actionCenter_Horizontally,SIGNAL(triggered()),w_scene,SLOT(centerHorizontal()));
 	connect(ui->actionAlign_Right,SIGNAL(triggered()),w_scene,SLOT(alignRight()));
 	connect(ui->actionAlign_Top,SIGNAL(triggered()),w_scene,SLOT(alignTop()));
 	connect(ui->actionCenter_Vertically,SIGNAL(triggered()),w_scene,SLOT(centerVertical()));
 	connect(ui->actionAlign_Bottom,SIGNAL(triggered()),w_scene,SLOT(alignBottom()));
+	/* actions */
 	connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(load()));
 	connect(ui->actionSave,SIGNAL(triggered()),this,SLOT(save()));
+	connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
 	connect(ui->actionGroup,SIGNAL(triggered()),w_scene,SLOT(group()));
 	connect(ui->actionUngroup,SIGNAL(triggered()),w_scene,SLOT(ungroup()));
 
@@ -124,15 +132,6 @@ void MainWindow::on_actionSelect_triggered()
 	ui->screen->setDragMode(QGraphicsView::RubberBandDrag);
 	ui->screen->setRubberBandSelectionMode(Qt::ContainsItemShape);
 	w_scene->setEditFlags(BaseScene::DisallowAll);
-}
-
-void MainWindow::on_actionItem_List_toggled(bool arg1)
-{
-/*	if(ui->actionItem_List->isChecked())
-		ui->itemList->setVisible(1);
-	else
-		ui->itemList->setVisible(0);
-		*/
 }
 
 void MainWindow::on_actionZoom_In_triggered()			{ ui->screen->scale(2,2); }

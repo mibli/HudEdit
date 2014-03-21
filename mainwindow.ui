@@ -191,8 +191,6 @@
     </property>
     <addaction name="actionZoom_In"/>
     <addaction name="actionZoom_Out"/>
-    <addaction name="separator"/>
-    <addaction name="actionItem_List"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -253,9 +251,6 @@
    </property>
   </action>
   <action name="actionSave">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
      <normaloff>:/new/actions/disk.png</normaloff>:/new/actions/disk.png</iconset>
@@ -268,9 +263,6 @@
    </property>
   </action>
   <action name="actionExit">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Exit</string>
    </property>
@@ -406,23 +398,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+G</string>
-   </property>
-  </action>
-  <action name="actionItem_List">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Item List</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Tab</string>
    </property>
   </action>
   <action name="actionAlign_Left">

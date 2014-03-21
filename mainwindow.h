@@ -36,8 +36,6 @@ private slots:
 	void on_actionResize_triggered();
 	void on_actionSelect_triggered();
 
-	void on_actionItem_List_toggled(bool arg1);
-
 	void on_actionZoom_In_triggered();
 	void on_actionZoom_Out_triggered();
 
