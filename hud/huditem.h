@@ -25,6 +25,7 @@ public:
 	bool		hasUV()					{ return iniItem->contains("UV"); }
 	QRectF		getUV()					{ if(hasUV()) return (*iniItem)["UV"].toQRectF(); else return QRectF(); }
 	void		setUV(const QRectF &r)	{ if(hasUV()) (*iniItem)["UV"] = r; }
+	void		save()					{ (*iniItem)["Rect"] = BaseItem::realRect(); }
 
 private:
 	QImage		texture;

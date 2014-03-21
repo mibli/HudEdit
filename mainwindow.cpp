@@ -89,6 +89,12 @@ void MainWindow::loadImage()
 
 void MainWindow::save()
 {
+	QList<QGraphicsItem*> list = w_scene->items();
+	for(int i=0; i<list.count(); i++)
+	{
+		HudItem* item = dynamic_cast<HudItem*>(list[i]);
+		if(item)	item->save();
+	}
 	w_list->save();
 }
 

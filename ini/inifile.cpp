@@ -71,9 +71,11 @@ bool	IniFile::save()
 	ostr << "BaseOffset: " + c_offset.toString();
 	for(int i=0; i<c_lines.count(); i++)
 	{
-		ostr << "\n";
 		if( !isComment(c_lines[i]) )
-		{ ostr << item(c_lines[i]).toString(); }
+		{
+			ostr << "\n";
+			ostr << item(c_lines[i]).toString();
+		}
 		else
 		{ ostr << c_lines[i]; }
 	}
