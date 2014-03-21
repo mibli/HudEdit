@@ -24,7 +24,8 @@ bool	IniFile::load(const QString &in)
 	QString		buf;
 
 	while ( !file.atEnd() ) {
-		 buf = file.readLine();
+		buf = file.readLine();
+		buf.remove("\n");
 
 		if( !isComment(buf) )
 		{
@@ -42,7 +43,7 @@ bool	IniFile::load(const QString &in)
 				{ c_offset = IniItem(bufor)["BaseOffset"]; }
 				else
 				{
-					bufor.removeAll("");
+					bufor.removeAll(QString(""));
 					c_items << IniItem(bufor);
 					c_names << c_items.last()["Name"];
 					c_lines << c_names.last();
@@ -71,11 +72,9 @@ bool	IniFile::save()
 	ostr << "BaseOffset: " + c_offset.toString();
 	for(int i=0; i<c_lines.count(); i++)
 	{
+		ostr << "\n";
 		if( !isComment(c_lines[i]) )
-		{
-			ostr << "\n";
-			ostr << item(c_lines[i]).toString();
-		}
+		{ qDebug() << item(c_lines[i]).toString(); ostr << item(c_lines[i]).toString(); }
 		else
 		{ ostr << c_lines[i]; }
 	}

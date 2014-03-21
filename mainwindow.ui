@@ -75,9 +75,6 @@
           <property name="frame">
            <bool>true</bool>
           </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
           <property name="minimum">
            <number>-1280</number>
           </property>
@@ -88,9 +85,6 @@
         </item>
         <item>
          <widget class="QSpinBox" name="yBox">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
           <property name="minimum">
            <number>-768</number>
           </property>
@@ -111,9 +105,6 @@
         </item>
         <item>
          <widget class="QSpinBox" name="widthBox">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
           <property name="minimum">
            <number>-1280</number>
           </property>
@@ -124,9 +115,6 @@
         </item>
         <item>
          <widget class="QSpinBox" name="heightBox">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
           <property name="minimum">
            <number>-768</number>
           </property>
