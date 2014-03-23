@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	about = new About(this);
 	connect(ui->actionAbout,SIGNAL(triggered()),about,SLOT(show()));
 
-	editMode = 0;
+	on_actionResize_triggered();
 }
 
 MainWindow::~MainWindow()
