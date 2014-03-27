@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	w_scene = new HudScene(this);
 	ui->screen->setScene(w_scene);
-	w_scene->setSceneRect(0,0,1024,768);
+	w_scene->setSceneRect(0,0,Hud::xRes,Hud::yRes);
 
 	ui->screen->setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
 
@@ -75,7 +75,7 @@ void MainWindow::load()
 	}
 }
 
-void MainWindow::loadImage()
+void MainWindow::load_image()
 {
 	QString path = QFileDialog::getOpenFileName(0,"Open Texture File","","(hudatlas.png)");
 	if(!path.isEmpty())
@@ -107,7 +107,7 @@ void MainWindow::on_actionUV_Selector_triggered()
 		{
 			if(item->hasAtlas())
 			{
-				if(HUDAtlas.isNull())	loadImage();
+				if(HUDAtlas.isNull())	load_image();
 				if(!HUDAtlas.isNull())	selectDialog->loadImage(HUDAtlas);
 				selectDialog->selectRect(item->getUV().toRect());
 				//ui->setEnabled(false);

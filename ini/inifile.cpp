@@ -69,7 +69,7 @@ bool	IniFile::save()
 	}
 	QTextStream ostr(&file);
 
-	ostr << "BaseOffset: " + c_offset.toString();
+	ostr << "BaseOffset: " + c_offset.string();
 	for(int i=0; i<c_lines.count(); i++)
 	{
 		ostr << "\n";

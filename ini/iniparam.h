@@ -1,6 +1,7 @@
 #ifndef INIPARAMS_H
 #define INIPARAMS_H
 
+#include "Hud.h"
 #include <QRectF>
 #include <QPointF>
 #include <QSize>
@@ -20,7 +21,7 @@ private:
 	QString*	c_string;
 public:
 	IniParam()						{ zero(); }
-	IniParam(const IniParam &in)	{ zero(); load(in.toString()); }
+	IniParam(const IniParam &in)	{ zero(); load(in.string()); }
 	IniParam(const QString &data)	{ zero(); load(data); }
 	~IniParam()						{ zero(); reset(); }
 
@@ -42,12 +43,16 @@ public:
 	void operator<<(const QString &in)		{ load(in); }
 
 	//converions
-	int		toInt()		const	{ if( c_type == NUMBER )	return c_number;	else return 0; }
-	QRectF	toQRectF()	const	{ if( c_type == RECT )		return *c_rect;		else return QRectF(); }
-	QSize	toQSize()	const	{ if( c_type == RECT )		return *c_res;		else return QSize(); }
-	QPointF	toQPointF()	const	{ if( c_type == POINT )		return *c_point;	else return QPointF(); }
-	QString toString()	const;
-	operator QString()	const	{ if( c_type == STRING )	return *c_string;	else return toString(); }
+	QRect	rect(bool translated = 0, const QPointF &anchor = QPoint()) const;
+	void	setRect(const QRect &r, bool translate = 0, const QPointF &anchor = QPoint());
+	QPoint	offset(const QPointF &anchor) const;
+	QSize	res(bool translated = 0) const;
+
+	int		integer()	const				{ if( c_type == NUMBER )	return c_number;	else return 0; }
+	QRectF	rectf()		const				{ if( c_type == RECT )		return *c_rect;		else return QRectF(); }
+	QPointF	point()		const				{ if( c_type == POINT )		return *c_point;	else return QPointF(); }
+	QString string()	const;
+	operator QString()	const				{ if( c_type == STRING )	return *c_string;	else return string(); }
 	void operator=(const int &in)			{ if( c_type == NUMBER )		c_number	= in; }
 	void operator=(const QPointF &in)		{ if( c_type == POINT )			*c_point	= in; }
 	void operator=(const QRectF &in)		{ if( c_type == RECT )			*c_rect	= in; }

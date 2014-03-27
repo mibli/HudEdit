@@ -9,8 +9,11 @@ HudItem::HudItem(IniItem *item, QGraphicsItem *parent) : BaseItem(parent)
 	setFlag(QGraphicsItem::ItemIsMovable);
 	iniItem = item;
 
-	BaseItem::setRect((*iniItem)["Rect"].toQRectF());
-	setZValue( (*iniItem)["Layer"].toInt() ); // setting layer;
+	QPointF	anchor = (*iniItem)["Anchor"].point();
+	QRect	rect = (*iniItem)["Rect"].rect(1,anchor);
+	BaseItem::setRect( rect );
+
+	setZValue( (*iniItem)["Layer"].integer() ); // setting layer;
 }
 
 HudItem::~HudItem()
@@ -44,4 +47,11 @@ void HudItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 	painter->drawRect(rect().normalized().adjusted(inc/2,inc/2,-inc/2,-inc/2));
 	painter->setPen(fgpen);
 	painter->drawRect(rect().normalized().adjusted(inc/2,inc/2,-inc/2,-inc/2));
+}
+
+void HudItem::save()
+{
+	QRect	rect = BaseItem::realRect().toRect();
+	QPointF	anchor = (*iniItem)["Anchor"].point();
+	(*iniItem)["Rect"].setRect(rect,true,anchor);
 }

@@ -69,8 +69,8 @@ bool IniParam::load(const QString &data)
 		if(!(vars.count()<6))
 		{
 			c_rect = new QRectF;
-			c_rect->setLeft	( vars[2].toDouble(&ok) );
-			c_rect->setTop	( vars[3].toDouble(&ok) );
+			c_rect->setLeft		( vars[2].toDouble(&ok) );
+			c_rect->setTop		( vars[3].toDouble(&ok) );
 			c_rect->setRight	( vars[4].toDouble(&ok) );
 			c_rect->setBottom	( vars[5].toDouble(&ok) );
 
@@ -81,7 +81,7 @@ bool IniParam::load(const QString &data)
 				vars << size_s.split("x");
 				if(!(vars.count()<2))
 				{
-					c_res->setWidth	( vars[0].toDouble(&ok) );
+					c_res->setWidth		( vars[0].toDouble(&ok) );
 					c_res->setHeight	( vars[1].toDouble(&ok) );
 				}
 				else { qDebug() << "IniParam::load() warning, bad Resolution format"; }
@@ -111,7 +111,7 @@ bool IniParam::load(const QString &data)
 	if(!ok){ qDebug() << "IniParam::load something went wrong"; }
 }
 
-QString IniParam::toString() const
+QString IniParam::string() const
 {
 	if( c_type == STRING )
 	{ return *c_string; }
@@ -157,5 +157,66 @@ bool IniParam::isEmpty() const
 	{ return c_string->isEmpty(); }
 	else
 	{ return true; }
+}
+
+QRect IniParam::rect(bool translated, const QPointF &anchor) const
+{
+	if( c_type == RECT )
+	{
+		if( translated )
+		{
+			QRectF rect_t = *c_rect;
+			rect_t.setLeft		(qRound( c_rect->left() / Hud::xVar ));
+			rect_t.setTop		(qRound( c_rect->top() / Hud::yVar ));
+			rect_t.setRight		(qRound( c_rect->right() / Hud::xVar ));
+			rect_t.setBottom	(qRound( c_rect->bottom() / Hud::yVar ));
+
+			if( !anchor.isNull() )
+			{ rect_t.translate(offset(anchor)); }
+
+			return rect_t.toRect();
+		}
+		return c_rect->toRect();
+	}
+	return QRect();
+}
+
+void IniParam::setRect(const QRect &r, bool translate, const QPointF &anchor)
+{
+	if( c_type == RECT )
+	{
+		*c_rect = r;
+
+		if( translate )
+		{
+			if( !anchor.isNull() )
+			{ c_rect->translate(-offset(anchor)); }
+
+			c_rect->setLeft		( c_rect->left() * Hud::xVar );
+			c_rect->setTop		( c_rect->top() * Hud::yVar );
+			c_rect->setRight	( c_rect->right() * Hud::xVar );
+			c_rect->setBottom	( c_rect->bottom() * Hud::yVar );
+		}
+	}
+}
+
+QPoint IniParam::offset(const QPointF &anchor) const
+{
+	return QPoint(
+				(Hud::xRes-res(1).width())*anchor.x(),
+				(Hud::yRes-res(1).height())*anchor.y() );
+}
+
+QSize IniParam::res(bool translated) const
+{
+	if( c_type == RECT )
+	{
+		if( translated )
+		{
+			return QSize(c_res->width() / Hud::xVar, c_res->height() / Hud::yVar);
+		}
+		return *c_res;
+	}
+	return QSize();
 }
 

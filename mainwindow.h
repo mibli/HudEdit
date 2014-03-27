@@ -28,7 +28,7 @@ public:
 
 public slots:
 	void load();
-	void loadImage();
+	void load_image();
 	void save();
 
 private slots:
@@ -51,6 +51,8 @@ private:
 	About*			about;
 	int				editMode;
 	QImage			HUDAtlas;
+	QImage			bgImage;
+	QSize			resolution;
 };
 
 #endif // MAINWINDOW_H
