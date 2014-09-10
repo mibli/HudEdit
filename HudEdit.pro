@@ -51,5 +51,4 @@ FORMS    += mainwindow.ui \
 OTHER_FILES +=
 
 RESOURCES += \
-    res/icons.qrc \
     res/actions.qrc

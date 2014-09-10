@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="res/icons.qrc">
-    <normaloff>:/new/mainIcon/png16</normaloff>:/new/mainIcon/png16</iconset>
-  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <property name="spacing">
@@ -138,7 +134,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -229,7 +225,7 @@
    </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/folder.png</normaloff>:/new/actions/folder.png</iconset>
+     <normaloff>:/actions/actions/folder.png</normaloff>:/actions/actions/folder.png</iconset>
    </property>
    <property name="text">
     <string>Open...</string>
@@ -241,7 +237,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/disk.png</normaloff>:/new/actions/disk.png</iconset>
+     <normaloff>:/actions/actions/disk.png</normaloff>:/actions/actions/disk.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -251,6 +247,10 @@
    </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/actions/actions/door.png</normaloff>:/actions/actions/door.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
@@ -270,7 +270,7 @@
    </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_handles.png</normaloff>:/new/actions/shape_handles.png</iconset>
+     <normaloff>:/actions/actions/shape_handles.png</normaloff>:/actions/actions/shape_handles.png</iconset>
    </property>
    <property name="text">
     <string>Resize</string>
@@ -280,6 +280,10 @@
    </property>
   </action>
   <action name="actionZoom_In">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/actions/actions/find.png</normaloff>:/actions/actions/find.png</iconset>
+   </property>
    <property name="text">
     <string>Zoom In</string>
    </property>
@@ -288,6 +292,10 @@
    </property>
   </action>
   <action name="actionZoom_Out">
+   <property name="icon">
+    <iconset resource="res/actions.qrc">
+     <normaloff>:/actions/actions/find.png</normaloff>:/actions/actions/find.png</iconset>
+   </property>
    <property name="text">
     <string>Zoom Out</string>
    </property>
@@ -301,7 +309,7 @@
    </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/arrow_undo.png</normaloff>:/new/actions/arrow_undo.png</iconset>
+     <normaloff>:/actions/actions/arrow_undo.png</normaloff>:/actions/actions/arrow_undo.png</iconset>
    </property>
    <property name="text">
     <string>Undo</string>
@@ -316,7 +324,7 @@
    </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/arrow_redo.png</normaloff>:/new/actions/arrow_redo.png</iconset>
+     <normaloff>:/actions/actions/arrow_redo.png</normaloff>:/actions/actions/arrow_redo.png</iconset>
    </property>
    <property name="text">
     <string>Redo</string>
@@ -331,7 +339,7 @@
    </property>
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/selection.png</normaloff>:/new/actions/selection.png</iconset>
+     <normaloff>:/actions/actions/selection.png</normaloff>:/actions/actions/selection.png</iconset>
    </property>
    <property name="text">
     <string>Select</string>
@@ -340,7 +348,7 @@
   <action name="actionWiki">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/world.png</normaloff>:/new/actions/world.png</iconset>
+     <normaloff>:/actions/actions/world.png</normaloff>:/actions/actions/world.png</iconset>
    </property>
    <property name="text">
     <string>HudEdit Wiki</string>
@@ -349,7 +357,7 @@
   <action name="actionAbout">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/exclamation.png</normaloff>:/new/actions/exclamation.png</iconset>
+     <normaloff>:/actions/actions/exclamation_octagon_fram.png</normaloff>:/actions/actions/exclamation_octagon_fram.png</iconset>
    </property>
    <property name="text">
     <string>About</string>
@@ -358,7 +366,7 @@
   <action name="actionUV_Selector">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/selection_select.png</normaloff>:/new/actions/selection_select.png</iconset>
+     <normaloff>:/actions/actions/image_1.png</normaloff>:/actions/actions/image_1.png</iconset>
    </property>
    <property name="text">
     <string>UV Selector</string>
@@ -367,7 +375,7 @@
   <action name="actionGroup">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/link.png</normaloff>:/new/actions/link.png</iconset>
+     <normaloff>:/actions/actions/shape_group.png</normaloff>:/actions/actions/shape_group.png</iconset>
    </property>
    <property name="text">
     <string>Group</string>
@@ -379,7 +387,7 @@
   <action name="actionUngroup">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/link_break.png</normaloff>:/new/actions/link_break.png</iconset>
+     <normaloff>:/actions/actions/shape_move_backwards.png</normaloff>:/actions/actions/shape_move_backwards.png</iconset>
    </property>
    <property name="text">
     <string>Ungroup</string>
@@ -391,7 +399,7 @@
   <action name="actionAlign_Left">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_left.png</normaloff>:/new/actions/shape_aling_left.png</iconset>
+     <normaloff>:/actions/actions/shape_aling_left.png</normaloff>:/actions/actions/shape_aling_left.png</iconset>
    </property>
    <property name="text">
     <string>Align Left</string>
@@ -403,7 +411,7 @@
   <action name="actionCenter_Horizontally">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_center.png</normaloff>:/new/actions/shape_aling_center.png</iconset>
+     <normaloff>:/actions/actions/shape_aling_center.png</normaloff>:/actions/actions/shape_aling_center.png</iconset>
    </property>
    <property name="text">
     <string>Center Horizontally</string>
@@ -415,7 +423,7 @@
   <action name="actionAlign_Right">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_right.png</normaloff>:/new/actions/shape_aling_right.png</iconset>
+     <normaloff>:/actions/actions/shape_aling_right.png</normaloff>:/actions/actions/shape_aling_right.png</iconset>
    </property>
    <property name="text">
     <string>Align Right</string>
@@ -427,7 +435,7 @@
   <action name="actionAlign_Top">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_top.png</normaloff>:/new/actions/shape_aling_top.png</iconset>
+     <normaloff>:/actions/actions/shape_aling_top.png</normaloff>:/actions/actions/shape_aling_top.png</iconset>
    </property>
    <property name="text">
     <string>Align Top</string>
@@ -439,7 +447,7 @@
   <action name="actionCenter_Vertically">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_middle.png</normaloff>:/new/actions/shape_aling_middle.png</iconset>
+     <normaloff>:/actions/actions/shape_aling_middle.png</normaloff>:/actions/actions/shape_aling_middle.png</iconset>
    </property>
    <property name="text">
     <string>Center Vertically</string>
@@ -451,7 +459,7 @@
   <action name="actionAlign_Bottom">
    <property name="icon">
     <iconset resource="res/actions.qrc">
-     <normaloff>:/new/actions/shape_aling_bottom.png</normaloff>:/new/actions/shape_aling_bottom.png</iconset>
+     <normaloff>:/actions/actions/shape_aling_bottom.png</normaloff>:/actions/actions/shape_aling_bottom.png</iconset>
    </property>
    <property name="text">
     <string>Align Bottom</string>
@@ -471,7 +479,6 @@
  </customwidgets>
  <resources>
   <include location="res/actions.qrc"/>
-  <include location="res/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

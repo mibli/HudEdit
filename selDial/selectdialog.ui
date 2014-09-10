@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>UV Selector</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="hudResources/hudIcons.qrc">
-    <normaloff>:/new/mainIcon/png16</normaloff>:/new/mainIcon/png16</iconset>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
     <number>0</number>
@@ -141,8 +137,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="hudResources/hudIcons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
