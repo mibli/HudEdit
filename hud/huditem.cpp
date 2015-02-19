@@ -18,7 +18,13 @@ HudItem::HudItem(IniItem *item, QGraphicsItem *parent) : BaseItem(parent)
 
 HudItem::~HudItem()
 {
-	(*iniItem)["Rect"] = rect();
+    (*iniItem)["Rect"] = rect();
+}
+
+const QImage HudItem::loadTexture(QImage* hudatlas)
+{
+    texture = hudatlas->copy((*iniItem)["UV"].rect(0));
+    return QImage(texture);
 }
 
 void HudItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -42,7 +48,7 @@ void HudItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 	{ fgpen.setColor(QColor(255,255,126)); }
 
 	if(!texture.isNull())	painter->drawImage(0, 0, texture);
-	else			painter->fillRect(rect().normalized(),brush);
+    else                    painter->fillRect(rect().normalized(),brush);
 	painter->setPen(bgpen);
 	painter->drawRect(rect().normalized().adjusted(inc/2,inc/2,-inc/2,-inc/2));
 	painter->setPen(fgpen);

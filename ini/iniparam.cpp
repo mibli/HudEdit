@@ -100,13 +100,13 @@ bool IniParam::load(const QString &data)
 		c_point->setX( vars[0].toDouble(&ok) );
 		c_point->setY( vars[1].toDouble(&ok) );
 	}
-	else if( c_number = data.toInt(&isInt) || isInt )
-	{ c_type = NUMBER; }
+    else if( (c_number = data.toInt(&isInt)) || isInt )
+    { c_type = NUMBER; }
 	else
 	{
 		c_type = STRING;
 		c_string = new QString(data);
-	}
+    }
 
 	if(!ok){ qDebug() << "IniParam::load something went wrong"; }
 }

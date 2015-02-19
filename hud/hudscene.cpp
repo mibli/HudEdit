@@ -2,12 +2,19 @@
 
 HudScene::HudScene(QObject *parent) :
 	BaseScene(parent)
+{}
+
+HudItem* HudScene::addHudItem(IniItem* in)
 {
+    HudItem* item = new HudItem(in);
+	addItem(item);
+    hudItemList.append(item);
+    return item;
 }
 
-HudItem *HudScene::addHudItem(IniItem* in)
+QList<HudItem *> HudScene::hudItems()
 {
-	HudItem *item = new HudItem(in);
-	addItem(item);
-	return item;
+    return hudItemList;
 }
+
+

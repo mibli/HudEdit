@@ -22,8 +22,8 @@ bool IniItem::load(const QStringList &lines)
 
 	for(int i=0; i<lines.count(); i++)
 	{
-		ok = ok | insert(lines[i]);
-	}
+        ok = ok | insert(lines[i]);
+    }
 
 	if(!ok)
 	{

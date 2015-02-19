@@ -18,6 +18,7 @@ public:
 	HudItem(IniItem* item, QGraphicsItem *parent=0);
 	~HudItem();
 
+    const QImage loadTexture(QImage *hudatlas);
 	QRectF boundingRect() const	{ return BaseItem::boundingRect(); }
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 	bool resize(int deltaWidth, int deltaHeight);

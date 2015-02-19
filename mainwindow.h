@@ -28,7 +28,7 @@ public:
 
 public slots:
 	void load();
-	void load_image();
+    void load_image();
 	void save();
 
 private slots:

@@ -74,7 +74,7 @@ bool	IniFile::save()
 	{
 		ostr << "\n";
 		if( !isComment(c_lines[i]) )
-		{ qDebug() << item(c_lines[i]).toString(); ostr << item(c_lines[i]).toString(); }
+        { /*qDebug() << item(c_lines[i]).toString();*/ ostr << item(c_lines[i]).toString(); }
 		else
 		{ ostr << c_lines[i]; }
 	}

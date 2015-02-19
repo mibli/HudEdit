@@ -11,10 +11,14 @@
 class HudScene : public BaseScene
 {
 	Q_OBJECT
+private:
+    QList<HudItem*> hudItemList;
+
 public:
 	explicit HudScene(QObject *parent = 0);
 
 	HudItem*	addHudItem(IniItem* in);
+    QList<HudItem*> hudItems();
 
 public slots:
 	void	select(QGraphicsItem* item)		{ deselectAll(); item->setSelected(1); }

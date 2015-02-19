@@ -61,13 +61,16 @@ void MainWindow::load()
 		w_list = new ListFile(path);
 
 		QList<IniItem*> itemlist;
-		itemlist << w_list->getAll();
+        itemlist << w_list->getAll();
+
+        int n = 0;
+        int m = 0;
 
 		for(int i=0;i<itemlist.count();i++)
 		{
-			w_scene->addHudItem(itemlist[i]);
-		}
-		qDebug() << itemlist.count();
+            w_scene->addHudItem(itemlist[i]);
+        }
+        qDebug() << "Loaded " << itemlist.count() << " items";
 	}
 	else
 	{
@@ -89,12 +92,8 @@ void MainWindow::load_image()
 
 void MainWindow::save()
 {
-	QList<QGraphicsItem*> list = w_scene->items();
-	for(int i=0; i<list.count(); i++)
-	{
-		HudItem* item = dynamic_cast<HudItem*>(list[i]);
-		if(item)	item->save();
-	}
+    QList<HudItem*> list = w_scene->hudItems();
+    for(int i=0; i<list.count(); i++) list[i]->save();
 	w_list->save();
 }
 

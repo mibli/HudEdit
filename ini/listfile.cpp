@@ -65,6 +65,6 @@ QList<IniItem *> ListFile::getAll()
 {
 	QList<IniItem*> all;
 	for(int i=0; i<count(); i++)
-	{ all << c_files[i].getAll(); }
+    { all << c_files[i].getAll(); }
 	return all;
 }
