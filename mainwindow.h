@@ -19,40 +19,40 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	enum FileMode { NoFile, ListOfFiles, SingleFile };
+    enum FileMode { NoFile, ListOfFiles, SingleFile };
 
     explicit MainWindow(QWidget *parent = 0);
-	~MainWindow();
+    ~MainWindow();
 
 public slots:
-	void load();
+    void load();
     void load_image();
-	void save();
+    void save();
 
 private slots:
-	void on_actionUV_Selector_triggered();
-	void on_actionResize_triggered();
-	void on_actionSelect_triggered();
+    void on_actionUV_Selector_triggered();
+    void on_actionResize_triggered();
+    void on_actionSelect_triggered();
 
-	void on_actionZoom_In_triggered();
-	void on_actionZoom_Out_triggered();
+    void on_actionZoom_In_triggered();
+    void on_actionZoom_Out_triggered();
 
-	void on_actionWiki_triggered();
-	void onUVin(int x1, int y1, int x2, int y2);
+    void on_actionWiki_triggered();
+    void onUVin(int x1, int y1, int x2, int y2);
 
 private:
-	Ui::MainWindow	*ui;
-	FileMode		w_mode;
-	ListFile*		w_list;
-	HudScene*		w_scene;
-	SelectDialog*	selectDialog;
-	About*			about;
-	int				editMode;
-	QImage			HUDAtlas;
-	QImage			bgImage;
-	QSize			resolution;
+    Ui::MainWindow    *ui;
+    FileMode        w_mode;
+    ListFile*        w_list;
+    HudScene*        w_scene;
+    SelectDialog*    selectDialog;
+    About*            about;
+    int                editMode;
+    QImage            HUDAtlas;
+    QImage            bgImage;
+    QSize            resolution;
 };
 
 #endif // MAINWINDOW_H

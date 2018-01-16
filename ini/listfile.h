@@ -13,19 +13,19 @@
 class ListFile
 {
 private:
-	QString c_path;
-	QList<IniFile> c_files;
+    QString c_path;
+    QList<IniFile> c_files;
 
-	bool load();
+    bool load();
 
 public:
-	ListFile(const QString &pathIn);
-	~ListFile();
+    ListFile(const QString &pathIn);
+    ~ListFile();
 
-	bool			save();
-	int				count()						{return c_files.count();}
-	IniFile*		operator[](int i);
-	QList<IniItem*> getAll();
+    bool            save();
+    int                count()                        {return c_files.count();}
+    IniFile*        operator[](int i);
+    QList<IniItem*> getAll();
 };
 
 #endif // LISTFILE_H

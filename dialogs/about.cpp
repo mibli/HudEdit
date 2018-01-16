@@ -2,14 +2,14 @@
 #include "ui_about.h"
 
 About::About(QWidget *parent) :
-	QDialog(parent),
-	ui(new Ui::About)
+    QDialog(parent),
+    ui(new Ui::About)
 {
-	ui->setupUi(this);
-	connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(hide()));
+    ui->setupUi(this);
+    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(hide()));
 }
 
 About::~About()
 {
-	delete ui;
+    delete ui;
 }

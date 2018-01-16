@@ -10,21 +10,21 @@
 
 class HudScene : public BaseScene
 {
-	Q_OBJECT
+    Q_OBJECT
 private:
     QList<HudItem*> hudItemList;
 
 public:
-	explicit HudScene(QObject *parent = 0);
+    explicit HudScene(QObject *parent = 0);
 
-	HudItem*	addHudItem(IniItem* in);
+    HudItem*    addHudItem(IniItem* in);
     QList<HudItem*> hudItems();
 
 public slots:
-	void	select(QGraphicsItem* item)		{ deselectAll(); item->setSelected(1); }
-	void	selectAdd(QGraphicsItem* item)	{ item->setSelected(1); }
-	void	deselect(QGraphicsItem* item)	{ item->setSelected(0); }
-	void	deselectAll()					{ this->setSelectionArea(QPainterPath()); }
+    void    select(QGraphicsItem* item)        { deselectAll(); item->setSelected(1); }
+    void    selectAdd(QGraphicsItem* item)    { item->setSelected(1); }
+    void    deselect(QGraphicsItem* item)    { item->setSelected(0); }
+    void    deselectAll()                    { this->setSelectionArea(QPainterPath()); }
 };
 
 #endif // HUDSCENE_H

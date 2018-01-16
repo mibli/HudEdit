@@ -1,13 +1,13 @@
 #include "hudscene.h"
 
 HudScene::HudScene(QObject *parent) :
-	BaseScene(parent)
+    BaseScene(parent)
 {}
 
 HudItem* HudScene::addHudItem(IniItem* in)
 {
     HudItem* item = new HudItem(in);
-	addItem(item);
+    addItem(item);
     hudItemList.append(item);
     return item;
 }

@@ -11,26 +11,26 @@ class SelectDialog;
 
 class SelectDialog : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit SelectDialog(QWidget *parent = 0);
-	~SelectDialog();
-	bool loadImage(const QString &path);
-	bool loadImage(const QImage &image);
-	void selectRect(const QRect &r);
+    explicit SelectDialog(QWidget *parent = 0);
+    ~SelectDialog();
+    bool loadImage(const QString &path);
+    bool loadImage(const QImage &image);
+    void selectRect(const QRect &r);
 
 private:
-	Ui::SelectDialog *ui;
-	SelectScene* selectScene;
-	QImage texture;
+    Ui::SelectDialog *ui;
+    SelectScene* selectScene;
+    QImage texture;
 
 private slots:
-	void doneSelecting();
+    void doneSelecting();
 signals:
-	void rectSelected(int x1, int y1, int x2, int y2);
+    void rectSelected(int x1, int y1, int x2, int y2);
 public slots:
-	void selectRect(int x1, int y1, int x2, int y2);
+    void selectRect(int x1, int y1, int x2, int y2);
 };
 
 #endif // SELECTDIALOG_H
