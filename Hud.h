@@ -4,14 +4,14 @@
 class Hud
 {
 public:
-    static const int xRes = 1920;
-    static const int yRes = 1080;
+    static constexpr int xRes = 1920;
+    static constexpr int yRes = 1080;
 
-    static const double xVar = 0.64;
-    static const double yVar = 0.64;
+    static constexpr double xVar = 0.64;
+    static constexpr double yVar = 0.64;
 
-    static const int MinSize = 0;
-    static const int MaxSize = 1280;
+    static constexpr int MinSize = 0;
+    static constexpr int MaxSize = 1280;
 
     enum CursorRelativePosition
     {
